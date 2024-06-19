@@ -1,24 +1,16 @@
 package com.example.pokemons
 
-
 import android.os.Bundle
-import android.view.View
-import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.ButtonBarLayout
+import com.example.pokemons.data.Data
+import com.example.pokemons.model.Pokemon
 import com.example.pokemons.databinding.PokemonDetailsBinding
-
 
 class PokemonDetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: PokemonDetailsBinding
-
-    fun resizeDpToPx (dp: Int): Int {
-        return (dp * resources.displayMetrics.density).toInt()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,31 +18,27 @@ class PokemonDetailsActivity : AppCompatActivity() {
         binding = PokemonDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val bundle: Bundle? = intent.extras
-        val id = bundle?.getInt("id")
-
-        var image: Int = 0
-        var name = ""
-
-        when (id) {
-            1 -> {
-                image = R.drawable.ivyzaur
-                name = "bulbazaur"
-            }
+        binding.navigateBackButton.setOnClickListener{
+            this.finish()
         }
 
-        val rootLayout = binding.root
+        lateinit var pokemon: Pokemon
 
-        val imageView = ImageView(this)
-        imageView.setImageResource(image)
-        imageView.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT )
-        val textView = TextView(this)
-        textView.text = name
-        textView.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, resizeDpToPx(50) )
-
-        rootLayout.addView(imageView)
-        rootLayout.addView(textView)
-
-
+        val bundle: Bundle? = intent.extras
+        bundle?.let {
+            val id = it.getInt("id")
+            when (id) {
+                0 -> pokemon = Data.listOfPokemons[0]
+                1 -> pokemon = Data.listOfPokemons[1]
+                2 -> pokemon = Data.listOfPokemons[2]
+                3 -> pokemon = Data.listOfPokemons[3]
+            }
+            binding.pokemon = pokemon
+            binding.imageView.setImageResource(pokemon.image)
+        } ?: run {
+            val toast = Toast.makeText(applicationContext, "Something went wrong", Toast.LENGTH_SHORT)
+            toast.show()
+            this.finish()
+        }
     }
 }

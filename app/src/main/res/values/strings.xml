@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Pokemons</string>
+    <string name="scroll_view_wrapper">scroll view wrapper</string>
+    <string name="button">button</string>
+    <string name="pokemon_name">Name: %s</string>
+    <string name="type_pokemon_text">Type: %s</string>
+    <string name="pokemon_weight_text">Weight: %s</string>
+    <string name="pokemon_height_text">Height: %s</string>
+    <string name="navigate_back_button">navigate back button</string>
+    <string name="pokemon_image">pokemon image</string>
 </resources>
