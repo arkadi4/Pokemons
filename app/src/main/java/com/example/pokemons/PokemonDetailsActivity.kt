@@ -27,14 +27,14 @@ class PokemonDetailsActivity : AppCompatActivity() {
         val bundle: Bundle? = intent.extras
         bundle?.let {
             val id = it.getInt("id")
-            when (id) {
-                0 -> pokemon = Data.listOfPokemons[0]
-                1 -> pokemon = Data.listOfPokemons[1]
-                2 -> pokemon = Data.listOfPokemons[2]
-                3 -> pokemon = Data.listOfPokemons[3]
+            pokemon = Data.listOfPokemons[id]
+            binding.apply{
+                pokemonNameTextView.text = pokemon.name
+                imageView.setImageResource(pokemon.image)
+                pokemonTypeTextView.text = pokemon.type
+                pokemonWeightTextView.text = pokemon.weight.toString()
+                pokemonHeightTextView.text = pokemon.height.toString()
             }
-            binding.pokemon = pokemon
-            binding.imageView.setImageResource(pokemon.image)
         } ?: run {
             val toast = Toast.makeText(applicationContext, "Something went wrong", Toast.LENGTH_SHORT)
             toast.show()
