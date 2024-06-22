@@ -19,7 +19,6 @@
         app:layout_constraintTop_toTopOf="@+id/item_container"
         app:layout_constraintBottom_toBottomOf="@+id/item_container"
         android:padding="8dp"
-        android:src="@drawable/bulbasaur_processed"
         android:contentDescription="@string/pokemon_picture_content_descr"
         />
 

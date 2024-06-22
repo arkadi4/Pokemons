@@ -1,9 +1,11 @@
 package com.example.pokemons
 
 import android.os.Bundle
+import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.unit.dp
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.pokemons.data.Data
 import com.example.pokemons.databinding.ActivityMainBinding
 import com.example.pokemons.recycler_view.MyItemDecoration
@@ -21,10 +23,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val dividerItemDecoration = DividerItemDecoration(this, LinearLayout.VERTICAL)
+
         val adapter = MyRecyclerAdapter(Data.listOfPokemons)
-        binding.apply {
+        with (binding) {
             recyclerView.adapter = adapter
             recyclerView.addItemDecoration(MyItemDecoration(50.dp))
+            recyclerView.addItemDecoration(dividerItemDecoration)
             button.setOnClickListener{
                 val newList = Data.listOfPokemons.shuffled()
                 adapter.setData(newList)
