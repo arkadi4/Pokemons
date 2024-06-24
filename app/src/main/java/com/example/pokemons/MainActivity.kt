@@ -1,24 +1,21 @@
 package com.example.pokemons
 
-import android.content.Intent
 import android.os.Bundle
+import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.ui.unit.dp
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.pokemons.data.Data
 import com.example.pokemons.databinding.ActivityMainBinding
-import com.example.pokemons.databinding.ItemOfRecyclerViewBinding
-import com.example.pokemons.model.Pokemon
+import com.example.pokemons.recycler_view.MyItemDecoration
+import com.example.pokemons.recycler_view.MyRecyclerAdapter
+
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
-    fun onClick(pokemon: Pokemon) {
-        val intent = Intent(this, PokemonDetailsActivity::class.java)
-        intent.putExtra("id", pokemon.id)
-        startActivity(intent)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,17 +23,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Data.listOfPokemons.forEach {pokemon ->
-            val itemBinding = ItemOfRecyclerViewBinding.inflate(layoutInflater)
-            with (itemBinding) {
-                imageView.setImageResource(pokemon.image)
-                textView.text = pokemon.name
-                itemContainer.setOnClickListener{
-                    onClick(pokemon)
-                }
-            }
+        val dividerItemDecoration = DividerItemDecoration(this, LinearLayout.VERTICAL)
 
-            binding.linearLayout.addView(itemBinding.itemContainer)
+        val adapter = MyRecyclerAdapter(Data.listOfPokemons)
+        with (binding) {
+            recyclerView.adapter = adapter
+            recyclerView.addItemDecoration(MyItemDecoration(50.dp))
+            recyclerView.addItemDecoration(dividerItemDecoration)
+            button.setOnClickListener{
+                val newList = Data.listOfPokemons.shuffled()
+                adapter.setData(newList)
+            }
         }
     }
 }
