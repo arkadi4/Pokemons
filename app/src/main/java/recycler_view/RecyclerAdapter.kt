@@ -1,4 +1,4 @@
-package com.example.pokemons.recycler_view
+package recycler_view
 
 import android.content.Intent
 import android.view.LayoutInflater

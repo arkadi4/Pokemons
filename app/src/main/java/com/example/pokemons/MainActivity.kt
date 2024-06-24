@@ -8,9 +8,8 @@ import androidx.compose.ui.unit.dp
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.pokemons.data.Data
 import com.example.pokemons.databinding.ActivityMainBinding
-import com.example.pokemons.recycler_view.MyItemDecoration
-import com.example.pokemons.recycler_view.MyRecyclerAdapter
-
+import recycler_view.MyItemDecoration
+import recycler_view.MyRecyclerAdapter
 
 
 class MainActivity : AppCompatActivity() {
