@@ -2,10 +2,9 @@ package recycler_view
 
 import android.graphics.Rect
 import android.view.View
-import androidx.compose.ui.unit.Dp
 import androidx.recyclerview.widget.RecyclerView
 
-class MyItemDecoration(val value: Dp): RecyclerView.ItemDecoration() {
+class MyItemDecoration(val value: Float): RecyclerView.ItemDecoration() {
     override fun getItemOffsets(
         outRect: Rect,
         view: View,

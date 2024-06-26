@@ -1,12 +1,9 @@
 package recycler_view
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokemons.PokemonDetailsActivity
 import com.example.pokemons.databinding.ItemOfRecyclerViewBinding
 import com.example.pokemons.model.Pokemon
 
@@ -22,15 +19,7 @@ class MyRecyclerAdapter(private var listOfPokemons: List<Pokemon>): RecyclerView
 
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
         val pokemon = listOfPokemons[position]
-        with (holder.binding) {
-            textView.text = pokemon.name
-            imageView.setImageResource(pokemon.image)
-            itemContainer.setOnClickListener{
-                val intent: Intent = Intent(it.context, PokemonDetailsActivity::class.java)
-                intent.putExtra("id", pokemon.id)
-                startActivity(it.context, intent, null)
-            }
-        }
+        holder.bind(pokemon)
     }
 
     fun setData(newList: List<Pokemon>) {
