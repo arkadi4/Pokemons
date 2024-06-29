@@ -1,4 +1,4 @@
-package recycler_view
+package com.example.pokemons.recycler_view
 
 import android.graphics.Rect
 import android.view.View

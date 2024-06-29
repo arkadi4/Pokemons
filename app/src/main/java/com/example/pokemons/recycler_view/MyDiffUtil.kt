@@ -1,4 +1,4 @@
-package recycler_view
+package com.example.pokemons.recycler_view
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.pokemons.model.Pokemon
