@@ -18,7 +18,7 @@ class PokemonDetailsActivity : AppCompatActivity() {
         binding = PokemonDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.navigateBackButton.setOnClickListener{
+        binding.navigateBackButton.setOnClickListener {
             this.finish()
         }
 
@@ -28,7 +28,7 @@ class PokemonDetailsActivity : AppCompatActivity() {
         bundle?.let {
             val id = it.getInt("id")
             pokemon = Data.listOfPokemons[id]
-            binding.apply{
+            binding.apply {
                 pokemonNameTextView.text = pokemon.name
                 imageView.setImageResource(pokemon.image)
                 pokemonTypeTextView.text = pokemon.type
@@ -36,7 +36,8 @@ class PokemonDetailsActivity : AppCompatActivity() {
                 pokemonHeightTextView.text = pokemon.height.toString()
             }
         } ?: run {
-            val toast = Toast.makeText(applicationContext, "Something went wrong", Toast.LENGTH_SHORT)
+            val toast =
+                Toast.makeText(applicationContext, "Something went wrong", Toast.LENGTH_SHORT)
             toast.show()
             this.finish()
         }

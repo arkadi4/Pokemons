@@ -25,11 +25,19 @@ class MainActivity : AppCompatActivity() {
         val dividerItemDecoration = DividerItemDecoration(this, LinearLayout.VERTICAL)
         val adapter = MyRecyclerAdapter(Data.listOfPokemons)
 
-        with (binding) {
+        with(binding) {
             recyclerView.adapter = adapter
-            recyclerView.addItemDecoration(MyItemDecoration(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50F, resources.displayMetrics ) ) )
+            recyclerView.addItemDecoration(
+                MyItemDecoration(
+                    TypedValue.applyDimension(
+                        TypedValue.COMPLEX_UNIT_DIP,
+                        50F,
+                        resources.displayMetrics
+                    )
+                )
+            )
             recyclerView.addItemDecoration(dividerItemDecoration)
-            button.setOnClickListener{
+            button.setOnClickListener {
                 val newList = Data.listOfPokemons.shuffled()
                 adapter.setData(newList)
             }
