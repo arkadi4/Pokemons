@@ -1,4 +1,4 @@
-package recycler_view
+package com.example.pokemons.recycler_view
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.pokemons.model.Pokemon
@@ -6,7 +6,7 @@ import com.example.pokemons.model.Pokemon
 class MyDiffUtil(
     private val oldList: List<Pokemon>,
     private val newList: List<Pokemon>
-): DiffUtil.Callback() {
+) : DiffUtil.Callback() {
 
     override fun getOldListSize(): Int {
         return oldList.size
@@ -21,6 +21,6 @@ class MyDiffUtil(
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return  oldList[oldItemPosition] == newList[newItemPosition]
+        return oldList[oldItemPosition] == newList[newItemPosition]
     }
 }

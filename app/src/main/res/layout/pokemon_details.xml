@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/root"
     android:layout_width="match_parent"
@@ -35,11 +34,11 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:contentDescription="@string/pokemon_image"
+        android:src="@drawable/bulbasaur_2"
         app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_2"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_1"
-        android:src="@drawable/bulbasaur_2"/>
+        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_1" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_horizontal_1"
@@ -60,18 +59,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6"/>
+        app:layout_constraintGuide_percent="0.6" />
 
     <TextView
         android:id="@+id/pokemon_name_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/pokemon_name"
+        android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        android:textSize="28sp"/>
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <TextView
         android:id="@+id/pokemon_type_text_view"
